@@ -5,9 +5,9 @@ import (
 )
 
 // init initialises all commands, add your commands here for initialization
-// example: RootCmd.AddCommand(Cmd1, Cmd2, Cmd3).
+// example: RootCmd.AddCommand(cmd1, cmd2, cmd3).
 func init() {
-	RootCmd.AddCommand(Cmd1)
+	RootCmd.AddCommand(cmd1)
 }
 
 // RootCmd root command.

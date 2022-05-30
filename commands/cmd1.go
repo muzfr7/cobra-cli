@@ -6,13 +6,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// Cmd1 sample command.
-var Cmd1 = &cobra.Command{
+// cmd1 sample command.
+var cmd1 = &cobra.Command{
 	Use:   "cmd1",
 	Short: "cmd1 does something",
-	Run:   cmd1,
+	Run:   cmdOne,
 }
 
-func cmd1(ccmd *cobra.Command, args []string) {
+func cmdOne(ccmd *cobra.Command, args []string) {
 	fmt.Println("Hello from cmd one")
 }
