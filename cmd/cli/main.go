@@ -15,14 +15,14 @@ var (
 )
 
 func init() {
-	// load env vars if present.
+	// export environment variables from .env file.
 	if _, err := os.Stat("./.env"); err == nil {
 		if err = config.ExportEnvVars("./.env"); err != nil {
 			log.Fatal(err)
 		}
 	}
 
-	// load system env variables into Env struct.
+	// load exported environment variables into Env struct.
 	if err := envconfig.Process("", &Env); err != nil {
 		log.Fatal(err)
 	}
