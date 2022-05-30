@@ -15,11 +15,14 @@ var (
 )
 
 func init() {
+	// check whether .env file is present.
+	if _, err := os.Stat("./.env"); err != nil {
+		log.Fatal(err)
+	}
+
 	// export environment variables from .env file.
-	if _, err := os.Stat("./.env"); err == nil {
-		if err = config.ExportEnvVars("./.env"); err != nil {
-			log.Fatal(err)
-		}
+	if err := config.ExportEnvVars("./.env"); err != nil {
+		log.Fatal(err)
 	}
 
 	// load exported environment variables into Env struct.
