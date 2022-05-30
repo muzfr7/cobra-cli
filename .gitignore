@@ -1,0 +1,11 @@
+bin/*
+!bin/.gitkeep
+
+.idea/
+.tags
+*sublime-project
+*sublime-workspace
+.vscode/
+*.out
+
+.DS_Store
