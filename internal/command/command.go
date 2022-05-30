@@ -1,6 +1,8 @@
-package commands
+package command
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -12,8 +14,17 @@ func init() {
 
 // RootCmd root command.
 var RootCmd = &cobra.Command{
-	Use:           "cobra-cli",
-	Short:         "cobra-cli – demonstration command-line tool",
+	Use:           "cli",
+	Short:         "cli – demonstration command-line tool",
 	SilenceErrors: true,
 	SilenceUsage:  true,
+}
+
+// cmd1 sample command.
+var cmd1 = &cobra.Command{
+	Use:   "cmd1",
+	Short: "cmd1 does something",
+	Run: func(ccmd *cobra.Command, args []string) {
+		fmt.Println("Hello from cmd one")
+	},
 }

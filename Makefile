@@ -1,9 +1,9 @@
-APP_NAME=Cobra CLI
-BINARY_NAME=cobra-cli
+APP_NAME=CLI
+BINARY_NAME=cli
 
 build:
 	@echo "Building ${APP_NAME}..."
-	@go build -o bin/${BINARY_NAME} .
+	@go build -o bin/${BINARY_NAME} ./cmd/cli/
 	@echo "${APP_NAME} built"
 
 run: build
