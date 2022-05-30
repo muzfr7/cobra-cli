@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/muzfr7/cobra-cli/internal/command"
+	"github.com/muzfr7/cobra-cli/internal/commands"
 )
 
 func main() {
-	if err := command.RootCmd.Execute(); err != nil {
+	if err := commands.RootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
 }
