@@ -2,9 +2,7 @@ package main
 
 import (
 	"log"
-	"os"
 
-	"github.com/kelseyhightower/envconfig"
 	"github.com/muzfr7/cobra-cli/config"
 	"github.com/muzfr7/cobra-cli/internal/commands"
 )
@@ -15,18 +13,8 @@ var (
 )
 
 func init() {
-	// check whether .env file is present.
-	if _, err := os.Stat("./.env"); err != nil {
-		log.Fatal(err)
-	}
-
-	// export environment variables from .env file.
-	if err := config.ExportEnvVars("./.env"); err != nil {
-		log.Fatal(err)
-	}
-
-	// load exported environment variables into Env struct.
-	if err := envconfig.Process("", &Env); err != nil {
+	// load environment variables from .env file into Env.
+	if err := Env.Load(); err != nil {
 		log.Fatal(err)
 	}
 }

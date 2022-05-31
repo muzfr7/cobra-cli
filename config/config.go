@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"os"
 	"strings"
+
+	"github.com/kelseyhightower/envconfig"
 )
 
 // EnvConfig holds all environment variables.
@@ -13,8 +15,28 @@ type EnvConfig struct {
 	LogLevel    string `envconfig:"LOG_LEVEL" required:"true"`
 }
 
-// ExportEnvVars exports environment variables from given .env file.
-func ExportEnvVars(filename string) error {
+// Load loads environment variables into EnvConfig.
+func (e *EnvConfig) Load() error {
+	// check whether .env file is present.
+	if _, err := os.Stat("./.env"); err != nil {
+		return err
+	}
+
+	// export environment variables from .env file.
+	if err := exportEnvVars("./.env"); err != nil {
+		return err
+	}
+
+	// load exported environment variables into Env struct.
+	if err := envconfig.Process("", e); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// exportEnvVars exports environment variables from given .env file.
+func exportEnvVars(filename string) error {
 	file, err := os.Open(filename)
 	if err != nil {
 		return err
